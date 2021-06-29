@@ -6,52 +6,33 @@
     "registry": "https://registry.npmjs.org"
   },
   "bin": {
-    "simulate_liquidate_synthetic_pool": "simulate_liquidate_synthetic_pool.js"
+    "simulate_liquidate_synthetic_pool": "scripts/simulate_liquidate_synthetic_pool.js"
   },
   "scripts": {
     "build": "tsc",
     "test": "yarn jest --testPathIgnorePatterns e2e",
     "test:e2e": "yarn jest",
     "jest": "jest --runInBand --passWithNoTests",
-    "lint": "polkadot-dev-run-lint"
+    "lint": "polkadot-dev-run-lint",
+    "dev:simulate-liquidate-synthetic-pool": "ts-node --transpile-only src/scripts/simulate_liquidate_synthetic_pool.ts"
   },
   "dependencies": {
     "@laminar/api": "^0.2.0-beta.134",
-    "@open-web3/api": "^0.5.1",
-    "@open-web3/util": "^0.5.1",
-    "@polkadot/api": "^1.23.1",
-    "@polkadot/keyring": "^3.0.1",
-    "@polkadot/rpc-core": "^1.23.1",
-    "@polkadot/rpc-provider": "^1.23.1",
-    "@polkadot/util": "^3.0.1",
-    "@polkadot/util-crypto": "^3.0.1",
+    "@open-web3/api": "^0.9.4-9",
+    "@open-web3/util": "^0.9.4-9",
     "big.js": "^5.2.2",
     "bn.js": "^5.1.2",
     "dotenv": "^8.2.0"
   },
   "devDependencies": {
     "@babel/runtime": "^7.10.5",
+    "@open-web3/dev-config": "^0.1.13",
     "@polkadot/dev": "^0.55.28",
     "@types/big.js": "4.0.5",
     "@types/bn.js": "4.11.6",
     "@types/jest": "^26.0.7",
-    "@types/prettier": "2.0.2",
     "husky": "^4.2.5",
     "jest": "^26.1.0",
-    "prettier": "^2.0.5",
-    "pretty-quick": "^2.0.1",
-    "ts-jest": "^26.1.4",
-    "ts-node": "^8.10.2",
-    "typescript": "^3.9.7"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
-  },
-  "dependenciesMeta": {
-    "eslint": {
-      "unplugged": true
-    }
+    "ts-node": "^10.0.0"
   }
 }

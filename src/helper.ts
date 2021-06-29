@@ -1,14 +1,12 @@
 import { config as dotenv } from 'dotenv';
 import Big from 'big.js';
 import { options } from '@laminar/api/laminar/options';
-import { WsProvider } from '@polkadot/rpc-provider';
 import { Keyring } from '@polkadot/keyring';
 import { ApiManager } from '@open-web3/api';
 import { KeyringPair } from '@polkadot/keyring/types';
 import { toBaseUnit } from '@open-web3/util';
 import { SubmittableExtrinsic } from '@polkadot/api/types';
 import { xxhashAsHex } from '@polkadot/util-crypto';
-import { u64, u128 } from '@polkadot/types/primitive';
 
 dotenv();
 
@@ -17,23 +15,7 @@ export const config = {
   suri: process.env.SURI || '//Alice'
 };
 
-const types = {
-  TransactionPriority: u64,
-  FixedU128: u128,
-};
-
-export const createApi = async () => {
-  const ws = new WsProvider(config.ws);
-  const apiOptions = options({ provider: ws, types });
-  const apiManager = await ApiManager.create(apiOptions as any);
-
-  return {
-    apiManager,
-    api: apiManager.api
-  };
-};
-
-export const dollar = (x: BalanceType) => toBaseUnit(x).toFixed();
+export const dollar = (x: BalanceType) => toBaseUnit(x).toFixed(0);
 
 export type BalanceType = Big | number | string;
 
@@ -43,7 +25,7 @@ function getModulePrefix(module: string): string {
 
 export const setup = async () => {
   const keyring = new Keyring({ type: 'sr25519' });
-  const apiOptions = { ...options({ types }), wsEndpoint: config.ws, account: config.suri, keyring };
+  const apiOptions = { ...options({}), wsEndpoint: config.ws, account: config.suri, keyring };
   const apiManager = await ApiManager.create(apiOptions);
   const api = apiManager.api;
   const account = apiManager.defaultAccount!; // eslint-disable-line
@@ -82,8 +64,8 @@ export const setup = async () => {
       );
     },
     feedPrice(currency: string, price: BalanceType) {
-      const values = [[currency, new Big(price).toFixed()]];
-      return this.sudo(this.api.tx.oracle.feedValues(values, 0, new Uint8Array(), new Uint8Array()));
+      const values = [[currency, price]];
+      return this.sudo(this.api.tx.laminarOracle.feedValues(values));
     },
     send(call: SubmittableExtrinsic<'promise'>, account?: KeyringPair) {
       return this.apiManager.signAndSend(call, { account });
