@@ -6,7 +6,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "bin": {
-    "simulate_liquidate_synthetic_pool": "scripts/simulate_liquidate_synthetic_pool.js"
+    "simulate-liquidate-synthetic-pool": "scripts/simulate-liquidate-synthetic-pool.js"
   },
   "scripts": {
     "build": "tsc",
@@ -14,7 +14,7 @@
     "test:e2e": "yarn jest",
     "jest": "jest --runInBand --passWithNoTests",
     "lint": "polkadot-dev-run-lint",
-    "dev:simulate-liquidate-synthetic-pool": "ts-node --transpile-only src/scripts/simulate_liquidate_synthetic_pool.ts"
+    "dev:simulate-liquidate-synthetic-pool": "ts-node --transpile-only src/scripts/simulate-liquidate-synthetic-pool.ts"
   },
   "dependencies": {
     "@laminar/api": "^0.2.0-beta.134",

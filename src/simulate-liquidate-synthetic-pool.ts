@@ -1,6 +1,6 @@
 import { Context, setup, dollar } from './helper';
 
-export default async () => {
+export const simulateLiquidateSyntheticPool = async () => {
   const ctx: Context = await setup();
 
   const owner = process.env.OWNER;
