@@ -25,7 +25,14 @@ function getModulePrefix(module: string): string {
 
 export const setup = async () => {
   const keyring = new Keyring({ type: 'sr25519' });
-  const apiOptions = { ...options({}), wsEndpoint: config.ws, account: config.suri, keyring };
+  const apiOptions = {
+    ...options({
+      types: { AccountInfo: 'AccountInfoWithRefCount' }
+    }),
+    wsEndpoint: config.ws,
+    account: config.suri,
+    keyring
+  };
   const apiManager = await ApiManager.create(apiOptions);
   const api = apiManager.api;
   const account = apiManager.defaultAccount!; // eslint-disable-line
