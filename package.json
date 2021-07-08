@@ -6,7 +6,8 @@
     "registry": "https://registry.npmjs.org"
   },
   "bin": {
-    "simulate-liquidate-synthetic-pool": "scripts/simulate-liquidate-synthetic-pool.js"
+    "simulate-liquidate-synthetic-pool": "scripts/simulate-liquidate-synthetic-pool.js",
+    "simulate-margin-position": "scripts/simulate-margin-position.js"
   },
   "scripts": {
     "build": "tsc",
@@ -14,7 +15,8 @@
     "test:e2e": "yarn jest",
     "jest": "jest --runInBand --passWithNoTests",
     "lint": "polkadot-dev-run-lint",
-    "dev:simulate-liquidate-synthetic-pool": "ts-node --transpile-only src/scripts/simulate-liquidate-synthetic-pool.ts"
+    "dev:simulate-liquidate-synthetic-pool": "OWNER=5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y ts-node --transpile-only src/scripts/simulate-liquidate-synthetic-pool.ts",
+    "dev:simulate-margin-position": "TRADER=5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y ts-node --transpile-only src/scripts/simulate-margin-position.ts"
   },
   "dependencies": {
     "@laminar/api": "^0.2.0-beta.134",
