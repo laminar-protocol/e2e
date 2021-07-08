@@ -15,6 +15,7 @@
     "test:e2e": "yarn jest",
     "jest": "jest --runInBand --passWithNoTests",
     "lint": "polkadot-dev-run-lint",
+    "build-and-publish": "scripts/build-and-publish",
     "dev:simulate-liquidate-synthetic-pool": "OWNER=5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y ts-node --transpile-only src/scripts/simulate-liquidate-synthetic-pool.ts",
     "dev:simulate-margin-position": "TRADER=5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y ts-node --transpile-only src/scripts/simulate-margin-position.ts"
   },
