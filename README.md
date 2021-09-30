@@ -1,37 +1,45 @@
-# e2e
+# E2E & Simulations
+
+To run the simulation you need to local Laminar node
+
+### Running Laminar local node
+
+Using `docker`:
+```shell=
+docker run --rm -p 9944:9944  laminar/laminar-node:latest \
+--dev --ws-external --rpc-methods=unsafe \
+-levm=trace --tmp
+```
+
+To build the project without `docker` use the guidelines here:
+[**laminar-protocol/laminar-chain**](https://github.com/laminar-protocol/laminar-chain)
+Run the node with:
+```
+cargo run -- --dev --tmp
+```
 
 ## Simulate synthetic pool liquidation
 
-1. start laminar local node
-2. `npx -p @laminar/e2e@latest simulate-liquidate-synthetic-pool`
-
-default env args
-
+Install dependencies:
 ```
-process.env.WS_URL = 'ws://localhost::9944' # node endpoint
-process.env.SURI = '//Alice' # sudo account
+yarn
 ```
 
-required env args
-
-```
-process.env.OWNER # pool owner
+Run simulation:
+```shell=
+yarn dev:simulate-liquidate-synthetic-pool
 ```
 
 ## Simulate margin position
 
-1. start laminar local node
-2. `npx -p @laminar/e2e@latest simulate-margin-position`
+To use simulation you need to clone the repository and run the simulation script:
 
-default env args
-
+Install dependencies:
 ```
-process.env.WS_URL = 'ws://localhost::9944' # node endpoint
-process.env.SURI = '//Alice' # sudo account
+yarn
 ```
 
-required env args
-
-```
-process.env.TRADER # trader opening position
+Run simulation:
+```shell=
+yarn dev:simulate-margin-position
 ```
