@@ -20,9 +20,9 @@
     "dev:simulate-margin-position": "TRADER=5FLSigC9HGRKVhB9FiEo4Y3koPsNmBmLJbpXg2mp1hXcS59Y ts-node --transpile-only src/scripts/simulate-margin-position.ts"
   },
   "dependencies": {
-    "@laminar/api": "^0.2.0-beta.134",
-    "@open-web3/api": "^0.9.4-9",
-    "@open-web3/util": "^0.9.4-9",
+    "@laminar/api": "^0.3.2-2",
+    "@open-web3/api": "^1.0.2-2",
+    "@open-web3/util": "^1.0.2-2",
     "big.js": "^5.2.2",
     "bn.js": "^5.1.2",
     "dotenv": "^8.2.0"
